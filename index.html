@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Luis Felipe Duarte Herrera - Python Tech Lead & Data Scientist</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10B981", // Emerald 500
+                        "primary-dark": "#047857", // Emerald 700
+                        secondary: "#3B82F6", // Blue
+                        "background-light": "#F0FDF4", // Emerald 50
+                        "background-dark": "#020617", // Slate 950
+                        "card-light": "#FFFFFF",
+                        "card-dark": "#1E293B", // Slate 800
+                        "text-light": "#1F2937",
+                        "text-dark": "#F3F4F6",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px)",
+                        'grid-pattern-dark': "linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px)",
+                    }
+                },
+            },
+        };
+    </script>
+
+    <style>
+        body {
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+        .grid-bg {
+            background-size: 40px 40px;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10B981;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-sans transition-colors duration-300">
+
+    <!-- Background Grid -->
+    <div class="fixed inset-0 pointer-events-none z-0 grid-bg bg-grid-pattern dark:bg-grid-pattern-dark opacity-100"></div>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 glass-panel bg-white/80 dark:bg-background-dark/80 border-b border-gray-200 dark:border-gray-800 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold text-lg font-display shadow-lg group-hover:scale-105 transition-transform">
+                        LF
+                    </div>
+                    <span class="font-bold text-lg dark:text-white hidden sm:block">Luis Duarte</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium hover:text-primary transition-colors" data-i18n="navAbout">About Me</a>
+                    <a href="#skills" class="text-sm font-medium hover:text-primary transition-colors" data-i18n="navSkills">Skills</a>
+                    <a href="#experience" class="text-sm font-medium hover:text-primary transition-colors" data-i18n="navExp">Experience</a>
+                    <a href="#publications" class="text-sm font-medium hover:text-primary transition-colors" data-i18n="navPubs">Publications</a>
+                    <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors" data-i18n="navContact">Contact</a>
+                </div>
+                
+                <!-- Controls -->
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <!-- Language Toggle -->
+                    <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+                        <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 text-xs font-bold rounded-md transition-all duration-200 bg-white dark:bg-gray-700 shadow-sm text-primary">EN</button>
+                        <button onclick="setLanguage('es')" id="btn-es" class="px-3 py-1 text-xs font-bold rounded-md transition-all duration-200 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">ES</button>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors" id="theme-toggle">
+                        <span class="material-icons-round text-gray-600 dark:text-gray-300 block dark:hidden">dark_mode</span>
+                        <span class="material-icons-round text-gray-600 dark:text-gray-300 hidden dark:block">light_mode</span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors" onclick="toggleMobileMenu()">
+                        <span class="material-icons-round text-gray-600 dark:text-gray-300">menu</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 space-y-2 border-t border-gray-100 dark:border-gray-800 mt-2">
+                <a href="#about" class="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" onclick="toggleMobileMenu()" data-i18n="navAbout">About Me</a>
+                <a href="#skills" class="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" onclick="toggleMobileMenu()" data-i18n="navSkills">Skills</a>
+                <a href="#experience" class="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" onclick="toggleMobileMenu()" data-i18n="navExp">Experience</a>
+                <a href="#publications" class="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" onclick="toggleMobileMenu()" data-i18n="navPubs">Publications</a>
+                <a href="#contact" class="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" onclick="toggleMobileMenu()" data-i18n="navContact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-5 pt-12 pb-20 space-y-24">
+        
+        <!-- Hero Section -->
+        <section class="text-center flex flex-col items-center min-h-[60vh] justify-center">
+            <div class="relative mb-8 group cursor-pointer animate-float">
+                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white dark:border-gray-700 shadow-2xl relative z-10 bg-gray-200 ring-4 ring-primary/20">
+                    <!-- Image Source: Local folder 'img' with fallback -->
+                    <img 
+                        src="img/profile.jpg" 
+                        onerror="this.src='https://ui-avatars.com/api/?name=Luis+Duarte&background=0D8ABC&color=fff&size=256'"
+                        alt="Luis Felipe Duarte Herrera" 
+                        class="w-full h-full object-cover" 
+                    />
+                </div>
+                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-20 bg-primary text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap flex items-center gap-1 border border-white/20">
+                    <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                    <span data-i18n="openToWork">Open to Work</span>
+                </div>
+            </div>
+
+            <div class="space-y-6 max-w-3xl">
+                <h2 class="text-primary font-bold tracking-[0.2em] text-sm uppercase bg-primary/10 inline-block px-3 py-1 rounded-full" data-i18n="roleSubtitle">Python Tech Lead | Software Developer</h2>
+                <h1 class="text-5xl md:text-7xl font-display font-bold text-gray-900 dark:text-white leading-tight">
+                    Luis Felipe Duarte
+                </h1>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg md:text-xl max-w-2xl mx-auto" data-i18n="heroDescription">
+                    Driving innovation at the intersection of Artificial Intelligence, Cloud Architecture, and Energy Systems. I build scalable, intelligent solutions that solve real-world problems.
+                </p>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex gap-4 mt-8">
+                <a href="https://www.linkedin.com/in/luis-felipe-duarte-herrera-73b276207" target="_blank" class="p-3 bg-white dark:bg-card-dark rounded-full shadow-sm hover:shadow-md transition-all text-blue-600 dark:text-blue-400 hover:-translate-y-1 hover:bg-blue-50 dark:hover:bg-blue-900/30">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="https://github.com/LuisFDuarte" target="_blank" class="p-3 bg-white dark:bg-card-dark rounded-full shadow-sm hover:shadow-md transition-all text-gray-800 dark:text-gray-200 hover:-translate-y-1 hover:bg-gray-50 dark:hover:bg-gray-700">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="mailto:ledh02@gmail.com" class="p-3 bg-white dark:bg-card-dark rounded-full shadow-sm hover:shadow-md transition-all text-red-500 dark:text-red-400 hover:-translate-y-1 hover:bg-red-50 dark:hover:bg-red-900/30">
+                    <i class="fas fa-envelope text-xl"></i>
+                </a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-10 w-full max-w-xs sm:max-w-md">
+                <a href="#contact" class="flex-1 bg-gradient-to-r from-primary to-primary-dark hover:from-emerald-400 hover:to-emerald-600 text-white font-semibold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/30 transform active:scale-95">
+                    <span class="material-icons-round">email</span>
+                    <span data-i18n="contactMe">Contact Me</span>
+                </a>
+                <a href="#about" class="flex-1 bg-white dark:bg-card-dark border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary text-gray-800 dark:text-white font-semibold py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm transform active:scale-95">
+                    <span class="material-icons-round text-gray-500">person</span>
+                    <span data-i18n="knowMore">Know More</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Stats Grid -->
+        <section class="grid grid-cols-3 gap-4 md:gap-8 max-w-4xl mx-auto">
+            <div class="bg-white dark:bg-card-dark rounded-2xl p-4 md:p-8 text-center shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/50 transition-colors">
+                <div class="text-3xl md:text-4xl font-display font-bold text-primary">8+</div>
+                <div class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-2 uppercase tracking-wide font-semibold" data-i18n="yearsExp">Years Exp.</div>
+            </div>
+            <div class="bg-white dark:bg-card-dark rounded-2xl p-4 md:p-8 text-center shadow-sm border border-gray-100 dark:border-gray-800 hover:border-secondary/50 transition-colors">
+                <div class="text-3xl md:text-4xl font-display font-bold text-secondary">20+</div>
+                <div class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-2 uppercase tracking-wide font-semibold" data-i18n="projects">Projects</div>
+            </div>
+            <!-- Clickable Publications Stat -->
+            <a href="#publications" class="bg-white dark:bg-card-dark rounded-2xl p-4 md:p-8 text-center shadow-sm border border-gray-100 dark:border-gray-800 hover:border-orange-500/50 transition-all hover:shadow-lg hover:-translate-y-1 cursor-pointer group">
+                <div class="text-3xl md:text-4xl font-display font-bold text-orange-500 group-hover:text-orange-600 transition-colors">12</div>
+                <div class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-2 uppercase tracking-wide font-semibold" data-i18n="publications">Publications</div>
+            </a>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="scroll-mt-24">
+            <h2 class="text-3xl font-display font-bold mb-8 dark:text-white flex items-center gap-2">
+                <span class="w-8 h-1 bg-primary rounded-full"></span>
+                <span data-i18n="aboutTitle">About Me</span>
+            </h2>
+            <div class="bg-white dark:bg-card-dark rounded-3xl p-6 md:p-10 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/3">
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 relative group">
+                         <img 
+                            src="img/profile.jpg" 
+                            onerror="this.src='https://ui-avatars.com/api/?name=Luis+Duarte&background=0D8ABC&color=fff&size=256'"
+                            alt="Luis Felipe Duarte Herrera" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 space-y-4">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white" data-i18n="aboutHeading">Passionate Developer & Researcher</h3>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="aboutText1">
+                        I am a skilled software developer and researcher with a Master's in Engineering. My passion lies in the intersection of Artificial Intelligence, renewable energy, and software architecture. With over 8 years of experience, I have transitioned from academic research in energy forecasting to leading technical teams in building robust cloud-native applications.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed" data-i18n="aboutText2">
+                        Currently, as a Python Tech Lead, I focus on integrating cutting-edge AI (like RAG systems and Agentic workflows) into scalable backend architectures. I strive to build intelligent spaces and efficient systems that reduce our carbon footprint and drive technological efficiency.
+                    </p>
+                    <div class="pt-4 flex gap-3 flex-wrap">
+                        <span class="px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold">M.Eng Electrical Engineering</span>
+                        <span class="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold">Data Scientist</span>
+                        <span class="px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs font-bold">Tech Lead</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section (Cards) -->
+        <section id="skills" class="scroll-mt-24">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-3xl font-display font-bold dark:text-white flex items-center gap-2">
+                    <span class="w-8 h-1 bg-secondary rounded-full"></span>
+                    <span data-i18n="skillsTitle">Technical Skills</span>
+                </h2>
+                <a href="https://github.com/LuisFDuarte" target="_blank" class="text-sm text-primary font-medium hover:underline hidden sm:block">View on GitHub &rarr;</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                
+                <!-- Card 1: Languages & Backend -->
+                <div class="bg-white dark:bg-card-dark p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-lg transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-4 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40 transition-colors">
+                        <i class="fas fa-code text-2xl text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4" data-i18n="skillCat1">Languages & Backend</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium border border-gray-200 dark:border-gray-700">Python</span>
+                        <span class="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-
